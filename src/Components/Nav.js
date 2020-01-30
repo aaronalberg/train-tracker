@@ -6,7 +6,7 @@ class Nav extends React.Component {
     
     
     componentDidMount(){
-        
+      /*  
     fetch('https://api-v3.mbta.com/predictions?filter[stop]=place-sstat&filter[direction_id]=0&include=stop')
 .then(function(response) {
   console.log(response.json());
@@ -14,6 +14,16 @@ class Nav extends React.Component {
 .catch(function(error) {
   console.log('Looks like there was a problem: \n', error);
 });
+        */
+        
+        fetch('https://api-v3.mbta.com/stops')
+.then(function(response) {
+  console.log(response.json());
+})
+.catch(function(error) {
+  console.log('Looks like there was a problem: \n', error);
+});
+
     }
 
   render() {
