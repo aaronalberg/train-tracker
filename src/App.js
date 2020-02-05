@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Station from "./Views/Station/Station";
 import Home from "./Views/Home/Home";
 import LineIndicator from "./Components/Snippets/LineIndicator/LineIndicator";
+import API from "./Components/API";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <API />
             <Nav />
                 <Switch>
                     <Route exact={true} path='/' render={() => (
@@ -35,6 +37,10 @@ function App() {
         </BrowserRouter>
     </div>
   );
+        
+
+
 }
+
 
 export default App;
