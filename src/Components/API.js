@@ -82,9 +82,9 @@ class API extends React.Component {
     render() {
     return( 
       <>
-        <h1>Nearby Stops {this.props.name}</h1>
-      <h1>Favorite Stops</h1>
-      <h1>Header</h1>
+      {/*  <h1>Nearby Stops {this.props.name}</h1>*/}
+      {/*<h1>Favorite Stops</h1>*/}
+      {/*<h1>Header</h1>*/}
       </>
         
   );}

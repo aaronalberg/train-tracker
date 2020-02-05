@@ -1,6 +1,7 @@
 import React from 'react';
 import './StationCard.css';
 import LineIndicator from "../../Snippets/LineIndicator/LineIndicator";
+import {connect} from "react-redux";
 
 class StationCard extends React.Component {
     state = {
@@ -40,4 +41,9 @@ class StationCard extends React.Component {
     }
 }
 
-export default StationCard;
+const mapStateToProps = (state) => ({
+    favoriteStations: state.favoriteStations,
+    theme: state.theme
+});
+
+export default connect(mapStateToProps)(StationCard);

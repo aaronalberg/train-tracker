@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import Nav from './Components/Core/Nav';
+import Nav from './Components/Core/Nav/Nav';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Station from "./Views/Station/Station";
 import Home from "./Views/Home/Home";
 import LineIndicator from "./Components/Snippets/LineIndicator/LineIndicator";
 import API from "./Components/API";
+import Settings from "./Views/Settings/Settings";
 
 function App() {
-
 
   return (
     <div className="App">
@@ -19,7 +19,7 @@ function App() {
                     <Route exact={true} path='/' render={() => (
                         <Home />
                     )}/>
-                    <Route exact={true} path='/station/:stationID' render={({match}) => (
+                    <Route exact={true} path='/station/:stationID' render={({ match }) => (
                        <Station
                            id={match.params.stationID}
                        />
@@ -31,6 +31,9 @@ function App() {
                                 branch="12"
                             />
                         </h1>
+                    )}/>
+                    <Route exact={true} path='/settings' render={() => (
+                        <Settings />
                     )}/>
                     {/*<Route component={Error} />*/}
                 </Switch>
