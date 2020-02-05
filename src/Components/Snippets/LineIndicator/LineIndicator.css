@@ -1,0 +1,23 @@
+.line-indicator {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    background-color: grey;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0 3px -0.125em 3px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.line-indicator-val {
+    position: absolute;
+    width: 100%;
+    line-height: 1.5em;
+    font-size: 0.65em;
+    text-align: center;
+    color: white;
+}

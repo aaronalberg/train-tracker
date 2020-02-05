@@ -1,23 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Nav from './Components/Nav';
+import Nav from './Components/Core/Nav';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Station from "./Views/Station/Station";
+import Home from "./Views/Home/Home";
+import LineIndicator from "./Components/Snippets/LineIndicator/LineIndicator";
 
 function App() {
 
-    
-    
-    
+
   return (
     <div className="App">
-      <Nav />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello world!
-        </p>
-        
-      </header>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <Nav />
+                <Switch>
+                    <Route exact={true} path='/' render={() => (
+                        <Home />
+                    )}/>
+                    <Route exact={true} path='/station/:stationID' render={({match}) => (
+                       <Station
+                           id={match.params.stationID}
+                       />
+                    )}/>
+                    <Route exact={true} path='/train/:trainID' render={({ match }) => (
+                        <h1>
+                            {match.params.trainID}
+                            <LineIndicator
+                                branch="12"
+                            />
+                        </h1>
+                    )}/>
+                    {/*<Route component={Error} />*/}
+                </Switch>
+        </BrowserRouter>
     </div>
   );
 }

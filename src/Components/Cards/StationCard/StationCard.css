@@ -1,0 +1,100 @@
+.station-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    color: #181A26;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 10px;
+    box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.011),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.016),
+            0 12.5px 10px rgba(0, 0, 0, 0.02),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.024),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.029),
+            0 100px 80px rgba(0, 0, 0, 0.04)
+;
+    overflow: hidden;
+    font-weight: 700;
+    margin-bottom: 12px;
+    -webkit-transition: transform 0.2s;
+    -moz-transition: transform 0.2s;
+    -ms-transition: transform 0.2s;
+    -o-transition: transform 0.2s;
+    transition: transform 0.2s;
+}
+
+/*.station-card:hover {*/
+/*    -webkit-transition: transform 0.2s;*/
+/*    -moz-transition: transform 0.2s;*/
+/*    -ms-transition: transform 0.2s;*/
+/*    -o-transition: transform 0.2s;*/
+/*    transition: transform 0.2s;*/
+/*    -webkit-transform: translateY(-2px);*/
+/*    -moz-transform: translateY(-2px);*/
+/*    -ms-transform: translateY(-2px);*/
+/*    -o-transform: translateY(-2px);*/
+/*    transform: translateY(-2px);*/
+/*}*/
+
+.station-card .station-desc {
+    float: left;
+    text-align: left;
+}
+
+.station-desc .line-list {
+    font-size: 20px;
+}
+
+.line-list img {
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    margin: 0 3px -0.125em 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.station-card .station-name {
+    font-size: 26px;
+    margin: 0;
+}
+
+.train-card .train-desc-info {
+    font-size: 16px;
+}
+
+.station-card .station-dist {
+    display: table;
+    float: right;
+    text-align: center;
+    height: auto;
+}
+
+.station-dist .station-dist-val {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    padding-right: 10px;
+}
+
+.station-card .station-dist .arr {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 40px;
+    transform: scaleY(2);
+    padding-bottom: 7.5px;
+}
+
+.station-dist .station-dist-unit {
+    margin: 0;
+    font-size: 24px;
+    display: block;
+}
