@@ -2,19 +2,18 @@ import React from 'react';
 import '../App.css';
 
 class API extends React.Component {
-    /*
+    
     loadTrains = (mapID) => {
         let baseUrl = 'https://cors-anywhere.herokuapp.com/http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=0e726cb9cf35433f9dcdf4d34504c50f&OutputType=JSON'
-        let mapID = '&mapId=' + mapID;
-        let urlReady = baseUrl + mapID;
+        let stationID = '&mapId=' + mapID;
+        let urlReady = baseUrl + stationID;
         
          
         
     }
-    */
+    
 
     componentDidMount() {
-      console.log('hello');
 
       this.loadAllStations();
 
@@ -22,35 +21,48 @@ class API extends React.Component {
     }
         
     loadAllStations = () => {
+
+      const removeDuplicates = (allStopsJson) => {
+
+        //at this point, allStopJson has duplicates of stations.
+        console.log(allStopsJson);
+        //next step: remove duplicates
+        var lastMapID = 1;
+        var duplicatesRemoved = [];
+        for (var i = 0; i < allStopsJson.length; i++) {
+          //let individualStop = JSON.stringify(allStopsJson[i]);
+          console.log(allStopsJson[i].map_id);
+          if (allStopsJson[i].map_id == lastMapID) {
+            continue;          
+          }
+          lastMapID = allStopsJson[i].map_id;
+          duplicatesRemoved.push(allStopsJson[i]);
+
+        }
+        console.log('duplicateremoved is:  ' + JSON.stringify(duplicatesRemoved));
+        }
+
+
         var allStops;
 
-        var baseUrl = 'https://data.cityofchicago.org/resource/8pix-ypme.json?$$app_token=692XlyeDC0eiRDxUq6zwJTCe3'
-        fetch(baseUrl)
-        .then((response) => {
+        let baseUrl = 'https://data.cityofchicago.org/resource/8pix-ypme.json?$$app_token=692XlyeDC0eiRDxUq6zwJTCe3'
+        fetch(baseUrl).then((response) => {
           return response.json();
         })
         .then((response) => {
-          allStops = JSON.stringify(response);
-          console.log('tmp is: ' + allStops);
+          var allStopsResponse = response;
+          //allStopsResponse = JSON.stringify(allStopsResponse);
+          //console.log(allStopsResponse);
+          removeDuplicates(allStopsResponse);
         })
         .catch(function(error) {
-            console.log('Request failed', error)
+            console.log('Request All Stops Failed', error)
         });
 
         
+
         
-    }
-
-
-       
-  
-
         /*
-        var arr = [];
-        for(var i = 0; i < allStops.map_id.length; i++){
-         arr.push(allStops.map_id[i].address);
-        }
-
         var sortedStopsList = arr.sort();
         var duplicatesRemoved = [];
 
@@ -59,25 +71,15 @@ class API extends React.Component {
                duplicatesRemoved.push(sortedStopsList[i]);
            }
          }
-
          */
-       
 
-        //duplicatesRemoved should be a list of unique MAP_IDs at this point
- 
 
+        
+        
+    }
 
         //for each train: run #, destination (dest), line, eta
         //remember return eta 0 if its due    
-    fetchResponse = (url) => {
-        fetch(url)
-  .then(function(response) {
-    return response.json();})
-  .then(function(text) {console.log('Request successful', text);})
-  .catch(function(error) {
-    console.log('Request failed', error)
-  });
-    }
 
     render() {
     return( 
