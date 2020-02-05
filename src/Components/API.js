@@ -31,7 +31,7 @@ class API extends React.Component {
         })
         .then((response) => {
           allStops = JSON.stringify(response);
-          console.log('tmp is: ' + tmp);
+          console.log('tmp is: ' + allStops);
         })
         .catch(function(error) {
             console.log('Request failed', error)
