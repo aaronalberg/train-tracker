@@ -8,19 +8,28 @@ import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage'
 import * as serviceWorker from './serviceWorker';
+import {themes} from './static/themes'
 
 const initialState = {
-    favoriteStations: ["temp", "two"],
+    favoriteStations: [],
     theme: 0
+};
+
+const applyTheme = theme => {
+    Object.keys(theme).map(key => {
+        const value = theme[key];
+        document.documentElement.style.setProperty(key, value);
+    });
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "UPDATE_SETTINGS":
+        case "UPDATE_THEME":
             state = {
                 ...state,
-                action
+                theme: action.theme
             };
+            applyTheme(themes[action.theme]);
             break;
         default:
             break;

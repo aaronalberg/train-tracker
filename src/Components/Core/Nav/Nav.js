@@ -1,31 +1,37 @@
 import React from 'react';
 import './Nav.css';
+import {Link, withRouter} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faCog } from '@fortawesome/free-solid-svg-icons';
 
 class Nav extends React.Component {
-    
-    
-    /*
-    componentDidMount(){
-    
-    }
-    */
 
-    
+    changeTitle = () => {
+        switch(window.location.pathname){
+            case '/profile':
+                return 'Profile';
+            case '/settings':
+                return 'Settings';
+            default:
+                return "Train Tracker"
+        }
+    };
 
 
   render() {
-    return ( 
-      <nav>
-        <a className="button">
-            B
-        </a>
-        <h1>Web Page</h1>
-        <a className="button search">
-            Q
-        </a>
-      </nav>
-    );
-}
+        let title = this.changeTitle();
+        return (
+          <nav>
+            <Link className="button" to="/settings">
+                <FontAwesomeIcon icon={faCog} />
+            </Link>
+            <h1>{title}</h1>
+            <a className="button search">
+                <FontAwesomeIcon icon={faSearch} />
+            </a>
+          </nav>
+        );
+    }
 }
 
-export default Nav;
+export default withRouter(Nav);

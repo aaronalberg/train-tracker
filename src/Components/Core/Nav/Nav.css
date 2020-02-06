@@ -1,24 +1,37 @@
 nav {
-    background-color: #2A6FE1;
-    padding: 1.3em 0.7em;
+    background-color: var(--primary-color);
+    padding: 0 1.2em;
     box-sizing: border-box;
     display: table;
     width: 100%;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    z-index: 2;
 }
 
 nav .button {
     display: table-cell;
-    color: white;
+    color: var(--contrast-text-color);
+    padding: 1em 0;
+    font-size: 22px;
+    text-align: center;
+    box-sizing: border-box;
+    width: 15%;
 }
 
-nav .button.search {
-    text-align: right;
+nav .button svg {
+    color: var(--contrast-text-color);
 }
 
 nav h1 {
     padding: 0;
     margin: 0;
-    color: white;
+    color: var(--contrast-text-color);
     display: table-cell;
     text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

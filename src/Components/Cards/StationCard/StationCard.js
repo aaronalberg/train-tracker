@@ -23,7 +23,8 @@ class StationCard extends React.Component {
         return(
             <a className="station-card" href={"/station/" + this.props.id}>
                 <span className="station-desc">
-                    <span className="line-list"><img src="https://upload.wikimedia.org/wikipedia/commons/6/64/MBTA.svg" alt="Transit Authority Logo"/>
+                    <span className="line-list">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Aiga_railtransportation_25.svg" alt="Transit Authority Logo"/>
                         {this.props.lines.map(line => (
                            <LineIndicator line={line} />
                         ))}

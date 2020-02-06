@@ -34,6 +34,24 @@ class Station extends React.Component {
                         eta={11}
                         id={3}
                     />
+                    <TrainCard
+                        name="Red Line"
+                        dest="Ashmont/Braintree"
+                        eta={11}
+                        id={3}
+                    />
+                    <TrainCard
+                        name="Red Line"
+                        dest="Ashmont/Braintree"
+                        eta={11}
+                        id={3}
+                    />
+                    <TrainCard
+                        name="Red Line"
+                        dest="Ashmont/Braintree"
+                        eta={11}
+                        id={3}
+                    />
                 </>
             </div>
         );

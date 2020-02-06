@@ -1,0 +1,23 @@
+#theme-picker-wrapper {
+    font-size: 20px;
+}
+
+#theme-picker-wrapper input {
+    display: none;
+}
+
+label.theme-picker {
+    margin: 0 0.2em -0.125em 0.125em;
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+/*input.theme-picker::checked {*/
+/*    border: 3px solid black;*/
+/*}*/

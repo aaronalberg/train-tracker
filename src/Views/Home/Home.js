@@ -15,7 +15,7 @@ class Station extends React.Component {
     render() {
         return(
             <>
-                <MapFrame />
+                {/*<MapFrame />*/}
                 <div className="container">
                     <h2>Near Me</h2>
                     <StationCard
