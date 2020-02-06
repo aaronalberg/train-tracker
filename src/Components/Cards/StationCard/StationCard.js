@@ -2,6 +2,8 @@ import React from 'react';
 import './StationCard.css';
 import LineIndicator from "../../Snippets/LineIndicator/LineIndicator";
 import {connect} from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSubway } from '@fortawesome/free-solid-svg-icons';
 
 class StationCard extends React.Component {
     state = {
@@ -24,7 +26,7 @@ class StationCard extends React.Component {
             <a className="station-card" href={"/station/" + this.props.id}>
                 <span className="station-desc">
                     <span className="line-list">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Aiga_railtransportation_25.svg" alt="Transit Authority Logo"/>
+                        <FontAwesomeIcon icon={faSubway} className="vehicle"/>
                         {this.props.lines.map(line => (
                            <LineIndicator line={line} />
                         ))}
