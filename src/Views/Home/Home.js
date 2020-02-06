@@ -1,5 +1,6 @@
 import React from 'react';
 import StationCard from "../../Components/Cards/StationCard/StationCard";
+import MapFrame from "../../Components/Core/MapFrame/MapFrame";
 // import './Home.css';
 
 class Station extends React.Component {
@@ -14,12 +15,12 @@ class Station extends React.Component {
     render() {
         return(
             <>
-                <img src="http://via.placeholder.com/1400x400" style={{width: "100%"}} alt=""/>
+                <MapFrame />
                 <div className="container">
                     <h2>Near Me</h2>
                     <StationCard
                         name="Alewife"
-                        lines={["red","green","green"]}
+                        lines={["red","g","g"]}
                         dist={0.7}
                         id={1}
                     />
