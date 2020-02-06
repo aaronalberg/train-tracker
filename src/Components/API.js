@@ -30,8 +30,6 @@ class API extends React.Component {
         var lastMapID = 1;
         var duplicatesRemoved = [];
         for (var i = 0; i < allStopsJson.length; i++) {
-          //let individualStop = JSON.stringify(allStopsJson[i]);
-          console.log(allStopsJson[i].map_id);
           if (allStopsJson[i].map_id == lastMapID) {
             continue;          
           }
