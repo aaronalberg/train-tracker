@@ -15,12 +15,12 @@ class API extends React.Component {
 
     componentDidMount() {
 
-      this.loadAllStations();
+      this.loadNearbyStations();
 
       
     }
         
-    loadAllStations = () => {
+    loadNearbyStations = () => {
 
       const distance = (lat1, lon1, lat2, lon2, unit) => {
         if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -44,10 +44,12 @@ class API extends React.Component {
         }
       }
 
+
+
       const removeDuplicates = (allStopsJson) => {
 
         //at this point, allStopJson has duplicates of stations.
-        console.log(allStopsJson);
+        //console.log(allStopsJson);
         //next step: remove duplicates
         var lastMapID = 1;
         var duplicatesRemoved = [];
@@ -57,26 +59,44 @@ class API extends React.Component {
           }
           lastMapID = allStopsJson[i].map_id;
           duplicatesRemoved.push(allStopsJson[i]);
+          
         }
-        
-        console.log('duplicatesremoved is:  ' + JSON.stringify(duplicatesRemoved));
+        addDistanceField(duplicatesRemoved);
+        //console.log('duplicatesremoved is:  ' + JSON.stringify(duplicatesRemoved));
         }
+
 
         const addDistanceField = (listOfStops) => {
 
+          let currentLocation;
 
-          for (var i = 0; i < listOfStops.length; i++) {
-            //listOfStops[i].distance = distance(listOfStops[i].latitude, listOfStops[i].longitude, "USER LAT", "USER LONG");
-            //GET DISTANCE
+          const setLocation = (position) => {
+
+            currentLocation = position;
+            let currentLatitude = currentLocation.coords.latitude;
+            let currentLongitude = currentLocation.coords.longitude;
+
+            for (var i = 0; i < listOfStops.length; i++) {
+              listOfStops[i].distance = distance(listOfStops[i].location.latitude,
+                listOfStops[i].location.longitude, currentLatitude, currentLongitude, "M");
+
+            }
+
+          }
+          if (navigator.geolocation) {
+            
+            navigator.geolocation.getCurrentPosition(setLocation);            
+
+          } else {
+            console.log("FAILED TO GET LOCATION");
           }
 
-
-
+          console.log(listOfStops);
         }
 
     
 
-        let baseUrl = 'https://data.cityofchicago.org/resource/8pix-ypme.json?$$app_token=692XlyeDC0eiRDxUq6zwJTCe3&$query='
+        let baseUrl = 'https://data.cityofchicago.org/resource/8pix-ypme.json?$$app_token=692XlyeDC0eiRDxUq6zwJTCe3'
         fetch(baseUrl).then((response) => {
           return response.json();
         })
@@ -93,19 +113,6 @@ class API extends React.Component {
         
 
         
-        /*
-        var sortedStopsList = arr.sort();
-        var duplicatesRemoved = [];
-
-         for (var i = 0; i < sortedStopsList.length - 1; i++) {
-           if (sortedStopsList[i + 1] != sortedStopsList[i]) {
-               duplicatesRemoved.push(sortedStopsList[i]);
-           }
-         }
-         */
-
-
-        
         
     }
 
@@ -113,14 +120,13 @@ class API extends React.Component {
         //remember return eta 0 if its due    
 
     render() {
-    return( 
-      <>
-      {/*  <h1>Nearby Stops {this.props.name}</h1>*/}
-      {/*<h1>Favorite Stops</h1>*/}
-      {/*<h1>Header</h1>*/}
-      </>
+      return( 
+        <>
+        <h1 idName="TEST"></h1>
         
-  );}
+        </>
+          
+      );}
 
     }
   
