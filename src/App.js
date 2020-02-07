@@ -52,8 +52,8 @@ function App() {
     );
 }
 
-const mapStateToProps = (state) => (
+const mapTheme = (state) => (
     theme = state.theme
 );
 
-export default connect(mapStateToProps)(App);
+export default connect(mapTheme)(App);
