@@ -1,15 +1,24 @@
 import React from 'react';
 import './MapFrame.css';
+import {connect} from "react-redux";
+
+let mapTheme = "streets-v11";
 
 class MapFrame extends React.Component {
 
     componentDidMount(){
+        mapTheme = "streets-v11";
+        if (this.props.theme === '5') {
+            mapTheme = "sirajchokshi/ck6bkhv9h3u9w1hpciuloa1zj";
+        }
+        console.log(mapTheme);
+
         var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
         mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyYWpjaG9rc2hpIiwiYSI6ImNrNjFmeTBmbzAzOWwzZHFuczgxNmh4NmMifQ.Kk4yTbSADM3CRqlUzq8OvA';
         var map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/mapbox/' + mapTheme + '',
             center: [-87.6785,41.9432],
             zoom: 14
         });
@@ -31,10 +40,15 @@ class MapFrame extends React.Component {
     }
 
     render() {
+
         return (
             <div id="map" />
         );
     }
 }
 
-export default MapFrame;
+const mapStateToProps = (state) => ({
+        theme: state.theme
+});
+
+export default connect(mapStateToProps)(MapFrame);

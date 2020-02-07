@@ -49,7 +49,7 @@
 .line-list .vehicle {
     color: var(--text-color);
     font-size: 0.9em;
-    border-radius: 50%;
+    border-radius: 0;
     margin: 0 3px 0 0;
     -webkit-user-select: none;
     -moz-user-select: none;

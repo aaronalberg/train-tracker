@@ -2,30 +2,44 @@ import React from 'react';
 import './Nav.css';
 import {Link, withRouter} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCog, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCog, faChevronLeft, faStar as Starred } from '@fortawesome/free-solid-svg-icons';
+import { faStar as unStarred } from '@fortawesome/free-regular-svg-icons';
 
 class Nav extends React.Component {
 
     changeTitle = () => {
-        switch(window.location.pathname){
-            case '/station/1':
-                return {
-                    leftButtonIcon: faChevronLeft,
-                    leftButtonLink: "/",
-                    title: 'Train'
-                };
-            case '/settings':
-                return {
-                    leftButtonIcon: faChevronLeft,
-                    leftButtonLink: "/",
-                    title: 'Settings'
-                };
-            default:
-                return {
-                    leftButtonIcon: faCog,
-                    leftButtonLink: "/settings",
-                    title: "Train Tracker"
-                }
+        if (window.location.pathname.includes('/station/')) {
+            return {
+                leftButtonIcon: faChevronLeft,
+                leftButtonLink: "/",
+                rightButtonLink: "favorite",
+                rightButtonIcon: unStarred,
+                title: 'Station'
+            };
+        } else if (window.location.pathname.includes('/train/')) {
+            return {
+                leftButtonIcon: faChevronLeft,
+                leftButtonLink: "/station/1",
+                rightButtonLink: "",
+                rightButtonIcon: null,
+                title: 'Train'
+            };
+        } else if (window.location.pathname === '/settings') {
+            return {
+                rightButtonLink: "/search",
+                rightButtonIcon: null,
+                leftButtonIcon: faChevronLeft,
+                leftButtonLink: "/",
+                title: 'Settings'
+            };
+        } else {
+            return {
+                rightButtonLink: "/search",
+                rightButtonIcon: faSearch,
+                leftButtonIcon: faCog,
+                leftButtonLink: "/settings",
+                title: "Train Tracker"
+            }
         }
     };
 
@@ -38,8 +52,8 @@ class Nav extends React.Component {
                 <FontAwesomeIcon icon={navInfo.leftButtonIcon} />
             </Link>
             <h1>{navInfo.title}</h1>
-            <a className="button search">
-                <FontAwesomeIcon icon={faSearch} />
+            <a className="button search" to={navInfo.rightButtonLink}>
+                <FontAwesomeIcon icon={navInfo.rightButtonIcon} />
             </a>
           </nav>
         );

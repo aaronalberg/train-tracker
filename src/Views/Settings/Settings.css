@@ -9,13 +9,27 @@
 label.theme-picker {
     margin: 0 0.2em -0.125em 0.125em;
     display: inline-block;
-    height: 1em;
-    width: 1em;
+    height: 1.7em;
+    width: 1.7em;
     border-radius: 50%;
     border: none;
     outline: none;
     cursor: pointer;
     font-size: inherit;
+}
+
+h4 {
+    margin-top: 1em;
+    color: var(--text-color);
+    margin-bottom: 0.65em;
+    font-size: 20px;
+    opacity: 0.6;
+}
+
+p {
+    margin-top: 0;
+    font-weight: 600;
+    opacity: 0.6;
 }
 
 /*input.theme-picker::checked {*/

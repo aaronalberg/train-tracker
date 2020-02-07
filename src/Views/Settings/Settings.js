@@ -29,8 +29,8 @@ class Settings extends React.Component {
     render() {
         return (
             <div className="container">
+                <h4>Theme:</h4>
                 <div id="theme-picker-wrapper">
-                    <p>Theme:</p>
                     <label
                         htmlFor="0"
                         className="theme-picker"
@@ -115,6 +115,8 @@ class Settings extends React.Component {
                         checked={this.state.selectedTheme === 5}
                     />
                 </div>
+                <h4>About</h4>
+                <p>Copyright &copy; 2020 Craftdog Studios</p>
             </div>
         );
     }
